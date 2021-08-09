@@ -1,11 +1,13 @@
 package pl.inteca.creditApp.service;
 
+import org.springframework.stereotype.Service;
 import pl.inteca.creditApp.model.Customer;
 import pl.inteca.creditApp.repository.CustomerRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CustomerService implements CustomerInterface{
 
     private final CustomerRepository customerRepository;
