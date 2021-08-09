@@ -19,8 +19,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long creditID;
+
     private String firstName;
+
     private Long pesel;
+
     private String surName;
 
 }

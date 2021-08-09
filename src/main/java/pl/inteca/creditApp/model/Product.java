@@ -18,7 +18,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long creditID;
+
     private String productName;
+
     private Long value;
 
 

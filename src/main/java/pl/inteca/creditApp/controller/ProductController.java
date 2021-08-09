@@ -3,11 +3,11 @@ package pl.inteca.creditApp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.inteca.creditApp.model.Product;
 import pl.inteca.creditApp.service.ProductService;
+
+import javax.persistence.EntityNotFoundException;
 
 @Controller
 @RequestMapping("/product")
@@ -28,6 +28,12 @@ public class ProductController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addProductForm (@ModelAttribute Product product, BindingResult result){
         productService.add(product);
-        return "redirect:/customer/add";
+        return "Next";
+    }
+
+    @GetMapping("/show/{id}")
+    public String showProduct(Model model, @PathVariable long id) {
+        model.addAttribute("product", productService.get(id).orElseThrow(EntityNotFoundException::new));
+        return "Show";
     }
 }
